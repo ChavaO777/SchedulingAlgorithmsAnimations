@@ -139,9 +139,6 @@ int main() {
 	// Global var `stdscr` is created by the call to `initscr()`
 	getmaxyx(stdscr, max_y, max_x);
 
-	//Initialize colors
-	init_pair(2, COLOR_BLACK, COLOR_GREEN);
-	
 	// Counter to determine the color to be used for painting the boxes
 	int iterationCounter = 0;
 
@@ -167,8 +164,8 @@ int main() {
 			if(processIsFinished[i] == 1) 
 				continue;
 
-			// Draw the corresponding box of the process
-			draw(arrLoY[i], arrLoX[i], arrHiY[i], arrHiX[i], toDraw, iterationCounter, arrProcessesNames[i], arrProcessesBurstTimes[i]);
+			// Draw the corresponding box of the process. If the box is moving, paint it green
+			draw(arrLoY[i], arrLoX[i], arrHiY[i], arrHiX[i], toDraw, iterationCounter, arrProcessesNames[i], arrProcessesBurstTimes[i], i == 0 || isItsTurn(i, processIsFinished));
 
 			// If it is not the turn of this process (i.e. the previous process has not finished), don't move the process
 			if(i > 0 && !isItsTurn(i, processIsFinished))
@@ -176,6 +173,7 @@ int main() {
 	 		
 			// If the process hasn't entered the CPU, move it forward
 			if(arrLoX[i] < cpuLoX + (cpuHiX - cpuLoX)/2 - 4){
+
 	 			advanceCoordinates(&arrNext_x[i], &arrLoX[i], &arrHiX[i], &arrDirection[i], max_x);
 			}
 

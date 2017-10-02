@@ -37,17 +37,20 @@ void drawInsideBox(int y, int x, char* numberToDraw){
 	mvprintw(y, x, numberToDraw);
 }
 
-void addColor(int counter, int mod){
+void addColor(int isGreen){
 
 	start_color();
 	init_pair(1, COLOR_WHITE, COLOR_RED);
 	init_pair(2, COLOR_WHITE, COLOR_GREEN);
 
 	// Choose the color depending on the counter
-	attron(COLOR_PAIR((counter%mod)/(mod/2) +  1));
+	attron(COLOR_PAIR(1 + (isGreen == 1)));
 }
 
-void draw(int loY, int loX, int hiY, int hiX, char* charToDraw, int counter, char* processName, char* processBurstTime){
+void draw(int loY, int loX, int hiY, int hiX, char* charToDraw, int counter, char* processName, char* processBurstTime, int isGreen){
+
+	// Add color
+	addColor(isGreen);
 
 	// Draw a box
 	drawBox(loY, loX, hiY, hiX, charToDraw);
@@ -57,21 +60,26 @@ void draw(int loY, int loX, int hiY, int hiX, char* charToDraw, int counter, cha
 
 	// Draw the process burst time
 	drawInsideBox(loY + 1 + (hiY - loY)/2, loX + (hiX - loX)/2, processBurstTime);
-
-	// Add color
-	addColor(counter, 10);
 }
 
-void draw2(int loY, int loX, int hiY, int hiX, char* charToDraw, int counter, char* processName, char* processBurstTime, char* processAriival){
+void draw2(int loY, int loX, int hiY, int hiX, char* charToDraw, int counter, char* processName, char* processBurstTime, char* processArrival, int isGreen){
 
 	drawBox(loY, loX, hiY, hiX, charToDraw);
 	drawInsideBox(loY - 1 +  (hiY - loY)/2, loX + (hiX - loX)/2, processName);
 	drawInsideBox(loY + (hiY - loY)/2, loX + (hiX - loX)/2, processBurstTime);
-    drawInsideBox(loY + 1 + (hiY - loY)/2, loX + (hiX - loX)/2, processAriival);
-	addColor(counter, 10);
+    drawInsideBox(loY + 1 + (hiY - loY)/2, loX + (hiX - loX)/2, processArrival);
+	
+	// Add color
+	addColor(isGreen);
 }
 
-void drawCPU(int cpuLoY, int cpuLoX, int cpuHiY, int cpuHiX){
+void drawCPU(int cpuLoY, int cpuLoX, int cpuHiY, int cpuHiX){	
+
+	// // Add color
+	// addColor(1);
+	start_color();
+	init_pair(1, COLOR_WHITE, COLOR_BLUE);
+	attron(COLOR_PAIR(1));
 
 	// Draw the CPU bpx
 	drawBox(cpuLoY, cpuLoX, cpuHiY, cpuHiX, "*");
@@ -79,8 +87,7 @@ void drawCPU(int cpuLoY, int cpuLoX, int cpuHiY, int cpuHiX){
 	// Draw the name "CPU"
 	drawInsideBox(cpuLoY + 2, cpuLoX - 1 + (cpuHiX - cpuLoX)/2, "CPU");
 
-	// Add color
-	addColor(10, 10);
+	refresh();
 }
 
 void drawTotalWaitingTime(int y, int x, int time){

@@ -1,9 +1,9 @@
 void drawLine(int loIndex, int hiIndex, int verticalIsConstant, int constantIndex, char* string);
 void drawBox(int loY, int loX, int hiY, int hiX, char* charToDraw);
 void drawInsideBox(int y, int x, char* numberToDraw);
-void addColor(int counter, int mod);
-void draw(int loY, int loX, int hiY, int hiX, char* charToDraw, int counter, char* processName, char* processBurstTime);
-void draw2(int loY, int loX, int hiY, int hiX, char* charToDraw, int counter, char* processName, char* processBurstTime, char* processArrival);
+void addColor(int isGreen);
+void draw(int loY, int loX, int hiY, int hiX, char* charToDraw, int counter, char* processName, char* processBurstTime, int isGreen);
+void draw2(int loY, int loX, int hiY, int hiX, char* charToDraw, int counter, char* processName, char* processBurstTime, char* processArrival, int isGreen);
 void drawCPU(int cpuLoY, int cpuLoX, int cpuHiY, int cpuHiX);
 void drawTotalWaitingTime(int y, int x, int time);
 void drawRemainingProcessesCounter(int y, int x, int remainingProcessesCounter);

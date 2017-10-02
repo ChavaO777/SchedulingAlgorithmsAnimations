@@ -207,15 +207,17 @@ int main() {
 				continue;
 
 			// Draw the corresponding box of the process
-			draw(arrLoY[i], arrLoX[i], arrHiY[i], arrHiX[i], toDraw, iterationCounter, arrProcessesNames[i], arrProcessesBurstTimes[i]);
+			draw(arrLoY[i], arrLoX[i], arrHiY[i], arrHiX[i], toDraw, iterationCounter, arrProcessesNames[i], arrProcessesBurstTimes[i], currProcessIndex == i);
 
 			// If it is not the turn of this process (i.e. the previous process has not finished), don't move the process
 			if(i > 0 && !isItsTurn(i, processIsFinished))
 				continue;
 	 			
 	 		// If the process hasn't entered the CPU, move it forward
-			if(arrLoX[currProcessIndex] < cpuLoX + (cpuHiX - cpuLoX)/2 - 4)
+			if(arrLoX[currProcessIndex] < cpuLoX + (cpuHiX - cpuLoX)/2 - 4){
+
 	 			advanceCoordinates(&arrNext_x[currProcessIndex], &arrLoX[currProcessIndex], &arrHiX[currProcessIndex], &arrDirection[currProcessIndex], max_x);
+			}
 
 	 		else{ // If the process has already entered the CPU
 

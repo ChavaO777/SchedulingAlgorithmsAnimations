@@ -133,7 +133,7 @@ int main() {
 				if(processIsFinished[i] == 1)
 					continue;
 
-				draw2(arrLoY[i], arrLoX[i], arrHiY[i], arrHiX[i], toDraw, counter, arrProcessesNames[i], arrProcessesBurstTimes[i], arrArrival[i]);
+				draw2(arrLoY[i], arrLoX[i], arrHiY[i], arrHiX[i], toDraw, counter, arrProcessesNames[i], arrProcessesBurstTimes[i], arrArrival[i], 1);
 				
 				if(tempMayor < arrProcessTotalTime[i]){
 

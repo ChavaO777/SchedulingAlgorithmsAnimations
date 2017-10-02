@@ -126,7 +126,7 @@ int main() {
 				continue;
 			
 
-			draw(arrLoY[i], arrLoX[i], arrHiY[i], arrHiX[i], toDraw, counter, arrProcessesNames[i], arrProcessesBurstTimes[i]);
+			draw(arrLoY[i], arrLoX[i], arrHiY[i], arrHiX[i], toDraw, counter, arrProcessesNames[i], arrProcessesBurstTimes[i], 1);
 
 			if(i != turno)
 				continue;
