@@ -111,36 +111,35 @@ int main() {
 	// Array to store whether a process has already finished
 	int processIsFinished[TOT_PROCESSES] = {0, 0, 0, 0};
 
-
 	// Assigning coordinate values and direction to the box with index 3
 	arrLoY[3] = 8;
 	arrLoX[3] = 0;
-	arrHiY[3] = 12;
-	arrHiX[3] = 8;
+	arrHiY[3] = 10;
+	arrHiX[3] = arrLoX[3] + 2*(arrHiY[3] - arrLoY[3]);
 	arrNext_x[3] = 0;
 	arrDirection[3] = 1;
 
 	// Assigning coordinate values and direction to the box with index 2
 	arrLoY[2] = 8;
-	arrLoX[2] = 12;
-	arrHiY[2] = 12;
-	arrHiX[2] = 20;
+	arrLoX[2] = 8;
+	arrHiY[2] = 14;
+	arrHiX[2] = arrLoX[2] + 2*(arrHiY[2] - arrLoY[2]);
 	arrNext_x[2] = 0;
 	arrDirection[2] = 1;
 
 	// Assigning coordinate values and direction to the box with index 1
 	arrLoY[1] = 8;
 	arrLoX[1] = 24;
-	arrHiY[1] = 12;
-	arrHiX[1] = 32;
+	arrHiY[1] = 11;
+	arrHiX[1] = arrLoX[1] + 2*(arrHiY[1] - arrLoY[1]);
 	arrNext_x[1] = 0;
 	arrDirection[1] = 1;
 
 	// Assigning coordinate values and direction to the box with index 0
 	arrLoY[0] = 8;
-	arrLoX[0] = 36;
+	arrLoX[0] = 34;
 	arrHiY[0] = 12;
-	arrHiX[0] = 44;
+	arrHiX[0] = arrLoX[0] + 2*(arrHiY[0] - arrLoY[0]);
 	arrNext_x[0] = 0;
 	arrDirection[0] = 1;
 
