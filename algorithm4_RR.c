@@ -113,20 +113,15 @@ int main() {
 
 		for(int i = 0; i < TOT_PROCESSES; i++){
 			
-			if(processIsFinished[i] == 1 && i == turno)
-			{
-				if(turno >= 3)
-	 					turno = 0;
-	 					
-	 				else
-	 					turno++;
+			if(processIsFinished[i] == 1 && i == turno){
+
+				turno = (turno >= 3) ? 0 : turno + 1;
 			}
 
 			if(processIsFinished[i] == 1)
 				continue;
-			
 
-			draw(arrLoY[i], arrLoX[i], arrHiY[i], arrHiX[i], toDraw, counter, arrProcessesNames[i], arrProcessesBurstTimes[i], 1);
+			draw(arrLoY[i], arrLoX[i], arrHiY[i], arrHiX[i], toDraw, counter, arrProcessesNames[i], arrProcessesBurstTimes[i], turno == i);
 
 			if(i != turno)
 				continue;
@@ -136,21 +131,17 @@ int main() {
 
 	 		if(arrLoX[i] == cpuLoX + (cpuHiX - cpuLoX)/2 - 4){
 	 		
-	 		     if(arrProcessTotalTime[i] == 0){
+	 		    if(arrProcessTotalTime[i] == 0){
+	 		     	
 	 		     	quantumContador = 0;
 	 				remainingProcessesCounter--;
 	 				processIsFinished[i] = 1;
-	 				if(turno >= 3)
-	 					turno = 0;
-	 					
-	 				else
-	 					turno++;
-
-	 		
-
+	 				
+	 				turno = (turno >= 3) ? 0 : turno + 1;
 	 			}
-	 			else if (quantum == quantumContador)
-	 			{
+
+	 			else if (quantum == quantumContador){
+
 	 				quantumContador = 0;
 	 				
 	 				while(z != 4){
@@ -160,8 +151,8 @@ int main() {
 							case 3:
 							arrLoY[3] = 8;
 							arrLoX[3] = 0;
-							arrHiY[3] = 12;
-							arrHiX[3] = 8;
+							arrHiY[3] = 10;
+							arrHiX[3] = arrLoX[3] + 2*(arrHiY[3] - arrLoY[3]);
 							arrNext_x[3] = 0;
 							arrDirection[3] = 1;
 							break;
@@ -169,9 +160,9 @@ int main() {
 							case 2:
 
 							arrLoY[2] = 8;
-							arrLoX[2] = 12;
-							arrHiY[2] = 12;
-							arrHiX[2] = 20;
+							arrLoX[2] = 8;
+							arrHiY[2] = 14;
+							arrHiX[2] = arrLoX[2] + 2*(arrHiY[2] - arrLoY[2]);
 							arrNext_x[2] = 0;
 							arrDirection[2] = 1;
 							break;
@@ -180,8 +171,8 @@ int main() {
 
 							arrLoY[1] = 8;
 							arrLoX[1] = 24;
-							arrHiY[1] = 12;
-							arrHiX[1] = 32;
+							arrHiY[1] = 11;
+							arrHiX[1] = arrLoX[1] + 2*(arrHiY[1] - arrLoY[1]);
 							arrNext_x[1] = 0;
 							arrDirection[1] = 1;
 							break;
@@ -189,9 +180,9 @@ int main() {
 							case 0:
 
 							arrLoY[0] = 8;
-							arrLoX[0] = 36;
+							arrLoX[0] = 34;
 							arrHiY[0] = 12;
-							arrHiX[0] = 44;
+							arrHiX[0] = arrLoX[0] + 2*(arrHiY[0] - arrLoY[0]);
 							arrNext_x[0] = 0;
 							arrDirection[0] = 1;
 							break;
@@ -201,15 +192,11 @@ int main() {
 	 				}
 	 				
 	 				z = 0;
-	 				
-	 				if(turno >= 3)
-	 					turno = 0;
-	 					
-	 				else
-	 					turno++;
+	 				turno = (turno >= 3) ? 0 : turno + 1;
 	 			}
 
 	 			else{
+
 	 				totalWaitingTime++;
 	 				arrProcessCurrentTime[i]++;
 	 				arrProcessTotalTime[i]--;

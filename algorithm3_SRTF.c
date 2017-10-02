@@ -110,11 +110,10 @@ int main() {
 	curs_set(FALSE);
 	int z = 0;
 	int tempMayor = 100;
-	int j =0;
+	int j = 0;
 
 	// Global var `stdscr` is created by the call to `initscr()`
 	getmaxyx(stdscr, max_y, max_x);
-	init_pair(2, COLOR_BLACK, COLOR_GREEN);
 	int counter = 0;
 	int turno = 0;
 
@@ -133,7 +132,7 @@ int main() {
 				if(processIsFinished[i] == 1)
 					continue;
 
-				draw2(arrLoY[i], arrLoX[i], arrHiY[i], arrHiX[i], toDraw, counter, arrProcessesNames[i], arrProcessesBurstTimes[i], arrArrival[i], 1);
+				draw2(arrLoY[i], arrLoX[i], arrHiY[i], arrHiX[i], toDraw, counter, arrProcessesNames[i], arrProcessesBurstTimes[i], arrArrival[i], 0);
 				
 				if(tempMayor < arrProcessTotalTime[i]){
 
@@ -145,7 +144,7 @@ int main() {
 		
 				continue;
 			}
-	 			
+
 			if(arrLoX[i] < cpuLoX + (cpuHiX - cpuLoX)/2 - 4)
 	 			advanceCoordinates(&arrNext_x[i], &arrLoX[i], &arrHiX[i], &arrDirection[i], max_x);
 
@@ -155,7 +154,6 @@ int main() {
 
 	 				remainingProcessesCounter--;
 	 				processIsFinished[i] = 1;
-
 
 	 				while(z != 4){
 
@@ -180,15 +178,15 @@ int main() {
 
 	 			if(arrProcessArriva[z] <= totalWaitingTime){
 
-	 				if(arrProcessTotalTime[z] < arrProcessTotalTime[i] && processIsFinished[z] == 0)
-	 				{		
+	 				if(arrProcessTotalTime[z] < arrProcessTotalTime[i] && processIsFinished[z] == 0){
+
 	 					switch(i){
 							
 							case 3:
 							arrLoY[3] = 8;
 							arrLoX[3] = 0;
-							arrHiY[3] = 12;
-							arrHiX[3] = 8;
+							arrHiY[3] = 10;
+							arrHiX[3] = arrLoX[3] + 2*(arrHiY[3] - arrLoY[3]);
 							arrNext_x[3] = 0;
 							arrDirection[3] = 1;
 							break;
@@ -196,9 +194,9 @@ int main() {
 							case 2:
 
 							arrLoY[2] = 8;
-							arrLoX[2] = 12;
-							arrHiY[2] = 12;
-							arrHiX[2] = 20;
+							arrLoX[2] = 8;
+							arrHiY[2] = 14;
+							arrHiX[2] = arrLoX[2] + 2*(arrHiY[2] - arrLoY[2]);
 							arrNext_x[2] = 0;
 							arrDirection[2] = 1;
 							break;
@@ -207,8 +205,8 @@ int main() {
 
 							arrLoY[1] = 8;
 							arrLoX[1] = 24;
-							arrHiY[1] = 12;
-							arrHiX[1] = 32;
+							arrHiY[1] = 11;
+							arrHiX[1] = arrLoX[1] + 2*(arrHiY[1] - arrLoY[1]);
 							arrNext_x[1] = 0;
 							arrDirection[1] = 1;
 							break;
@@ -216,9 +214,9 @@ int main() {
 							case 0:
 
 							arrLoY[0] = 8;
-							arrLoX[0] = 36;
+							arrLoX[0] = 34;
 							arrHiY[0] = 12;
-							arrHiX[0] = 44;
+							arrHiX[0] = arrLoX[0] + 2*(arrHiY[0] - arrLoY[0]);
 							arrNext_x[0] = 0;
 							arrDirection[0] = 1;
 							break;
