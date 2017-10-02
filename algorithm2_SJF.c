@@ -2,6 +2,11 @@
 // To compile this, you need to have ncurses installed
 // to compile, do this: edit the "make" file and then type "make" in the console
 
+/*
+	Author: Salvador Orozco Villalever - A07104218
+	Version: 10/02/2017
+*/
+
 #include <ncurses.h>
 #include <unistd.h>
 #include <string.h>

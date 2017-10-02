@@ -2,6 +2,11 @@
 // to compile, do this: gcc -lncurses algorithm4_RR.c
 // To compile this, you need to have ncurses installed
 
+/*
+	Author: Ibsan Acis Castillo Vitar - A01014779
+	Version: 10/02/2017
+*/
+
 #include <ncurses.h>
 #include <unistd.h>
 #include <string.h>
@@ -98,7 +103,7 @@ int main() {
 
 		clear();
 		drawCPU(cpuLoY, cpuLoX, cpuHiY, cpuHiX);
-		mvprintw(0, 0, "First-come-first-serve algorithm");
+		mvprintw(0, 0, "Round Robin algorithm");
 		drawRemainingProcessesCounter(2, 20, remainingProcessesCounter);
 		drawTotalWaitingTime(3, 12, totalWaitingTime);
 
